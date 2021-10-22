@@ -10,12 +10,12 @@ def get_iter(a: int, b: int) -> int:
     return 1 if a >= 0 and b >= 0 and min(a, b) == a else -1
 
 
-def calc_max_toys(no_of_shops: int,
-                  shops: int,
-                  position: int,
-                  moves_allowed: int,
-                  distances: List[int],
-                  toys: List[int]) -> int:
+def calc_max_toys(
+        shops: int,
+        position: int,
+        moves_allowed: int,
+        distances: List[int],
+        toys: List[int]) -> int:
     total_toys_collected: int = 0
     collected_list: List[int] = list()
     if position in distances:
@@ -44,15 +44,18 @@ def calc_max_toys(no_of_shops: int,
 
 
 if __name__ == "__main__":
-    no_of_shops = int(input())
-    shops, initial_position, moves_allowed = (
-        int(value) for value in input().split(' ')
-    )
-    distances = [int(value.strip())
-                 for value in input().strip("[").strip("]").split(",")]
-    toys = [int(value.strip())
-            for value in input().strip("[").strip("]").split(",")]
-    max_toys = calc_max_toys(
-        no_of_shops, shops, initial_position, moves_allowed, distances, toys)
+    no_of_iteration = int(input())
 
-    print(max_toys)
+    for i in range(no_of_iteration):
+
+        shops, initial_position, moves_allowed = (
+            int(value) for value in input().split(' ')
+        )
+        distances = [int(value.strip())
+                     for value in input().strip("[").strip("]").split(",")]
+        toys = [int(value.strip())
+                for value in input().strip("[").strip("]").split(",")]
+        max_toys = calc_max_toys(shops, initial_position,
+                                 moves_allowed, distances, toys)
+
+        print(max_toys)
