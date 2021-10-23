@@ -43,6 +43,10 @@ def calc_max_toys(
     return total_toys_collected
 
 
+def get_array_input() -> list:
+    return input().strip().strip("[").strip("]").split(",")
+
+
 if __name__ == "__main__":
     no_of_iteration = int(input())
 
@@ -51,10 +55,10 @@ if __name__ == "__main__":
         shops, initial_position, moves_allowed = (
             int(value) for value in input().split(' ')
         )
-        distances = [int(value.strip())
-                     for value in input().strip("[").strip("]").split(",")]
-        toys = [int(value.strip())
-                for value in input().strip("[").strip("]").split(",")]
+        distances = [int(value)
+                     for value in get_array_input()]
+        toys = [int(value)
+                for value in get_array_input()]
         max_toys = calc_max_toys(shops, initial_position,
                                  moves_allowed, distances, toys)
 
